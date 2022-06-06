@@ -1,24 +1,70 @@
-# SQLwithFlaskand-React
-A small project from iNeuron( using SQL create database and access through Flask backend and Python Console)
+# Getting Started with Create React App
 
-# Objective
-Create a console application using python and sql.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Description:
-1.	Create a stored procedure to check the account balance.
-2.	Create a stored procedure to withdraw the amount. 
-a.	User must have a sufficient amount to withdraw money from his/her account.
-b.	Minimum balance 5000 rupees must be maintained in each user account.
-3. Check account statement: Users should be able to check all transactions for a given interval of time.(From date and To date)
+## Available Scripts
 
-Table Structure
-1.	User Table(User Id, User name, User dob,User email, User created date )
-2.	Bank_Account Table  ( User Id, bank account id, bank account number, is user active, amount )
-3.	Transaction Table ( Transaction date, User Id, Bank A/C id, withdrawn amount ) 
+In the project directory, you can run:
 
-Note: If tasks 1, 2, and 3 are done, now create a console for a Python application. 
+### `npm start`
 
-Implement below functionality using python.
-1.	Invoke stored procedure using python script.
-2.	Insert record using python script.
-3.	Use OOPs to design python programs to implement all functionality mentioned above.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -1,0 +1,351 @@
+.Show{
+    transition: all 0.2s ease-in-out;
+}
+.Hide{
+    overflow: hidden;
+    display: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.Layout{
+    overflow-x:auto;
+    overflow-y: auto;
+    background:  #6441a5;
+    background: linear-gradient(#6441a5, #2a0845);
+    height:100vh;
+    z-index: 1;
+}
+
+.LayoutComponents{
+    display:flex;
+    justify-content:center;
+    background-color: white;
+}
+
+.Loader{
+    position:absolute;
+    top:0;
+    width:100vw;
+    height:100vh;
+    background-color: gray;
+    opacity:0.5;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .LoadingSpinner {
+    width: 20px;
+    height: 20px;
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #383636; /* Black */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+    margin: 250px auto 0;
+
+    text-align: center;
+  }
+
+.Header{
+    height:50px;
+    background-color:#4f2e88;
+    box-shadow: 1px 1px #502771;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    text-align: center;
+    justify-content:center;
+    align-items: center;
+}
+
+.HeaderLbl{
+    color:white;
+    font-size:16px;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+.HeaderBtn{
+    margin-top: 10px;
+    margin-right: 20px;
+    background-color: #3b0766;
+    outline: 0;
+    border:none;
+    color:white;
+    font-size:12px;
+    height:30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Footer{
+    height:50px;
+    background-color:#381e65;
+    box-shadow: 1px 1px #502771;
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    text-align: center;
+    justify-content:center;
+    align-items: center;
+}
+
+.FooterLbl{
+    color:white;
+    font-size:13px;
+    margin-top: 15px;
+}
+
+.AddUserDiv{
+    width: 0px;
+    height:calc(100% - 16vh);
+    z-index: 2;
+    background-color:#1f112b;;
+    transition:all 15s ease-in-out;
+    -webkit-transition: all 15s ease-in-out;
+    -moz-transition: all 15s ease-in-out;
+    -o-transition: all 15s ease-in-out;
+    -ms-transition: all 15s ease-in-out;
+    position:absolute;
+    top:50px;
+    right:0px;
+}
+
+.Open{
+    /* margin-right: 0px; */
+    width: 300px;
+    transform: translate(3em,0);
+    -webkit-transform: translate(3em,0);
+    -moz-transform:translate(3em,0);
+    -o-transform:translate(3em,0);
+    -ms-transform: translate(3em,0);
+}
+
+.Close{
+    /* margin-right: -10px; */
+    width:0px;
+}
+
+.FormEmail{
+  font-size: 14px;
+  color:white;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top:20px;
+}
+
+.FormEmailIp{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.FormEmailIp1{
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.FormDOB{
+  font-size: 14px;
+  color:white;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.Popper{
+    margin-top:-20px !important;
+}
+
+.FormDOBIp{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    background-color:white;
+}
+
+.FormAccountNo{
+    font-size: 14px;
+    color:white;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.FormAccountNoIp{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.FormSaveBtn{
+    margin-top: 10px;
+    margin-left: 20px;
+    background-color: #3b0766;
+    outline: 0;
+    border:none;
+    color:white;
+    font-size:12px;
+    height:30px;
+    border-radius: 10px;
+    cursor: pointer;
+    width:100px;
+}
+
+.FormSaveBtn1{
+    margin-top: 10px;
+    margin-left: 0px;
+    background-color: #3b0766;
+    outline: 0;
+    border:none;
+    color:white;
+    font-size:12px;
+    height:30px;
+    border-radius: 10px;
+    cursor: pointer;
+    width:100px;
+    margin-bottom: 10px;
+}
+
+.FormSaveBtn2{
+    margin-top: 20px;
+    margin-left: 50px;
+    background-color: white;
+    outline: 0;
+    border:none;
+    color:#3b0766;
+    font-size:12px;
+    height:30px;
+    border-radius: 10px;
+    cursor: pointer;
+    width:200px;
+    margin-bottom: 10px;
+}
+
+.UserList{
+    width:300px;
+    /* height:400px; */
+    border:1px solid white;
+    padding:5px;
+    margin-left: 40px;
+    margin-top: 80px;
+}
+
+.User{
+    background-color:white;
+    color:black;
+    font-size: 15px;
+    width:100%;
+    height: 40px;
+    margin-top:5px;
+    border-radius: 10px;
+    display:flex;
+    flex-flow: row;
+    justify-content: space-between;
+    /* padding-left: 10px;
+    padding-right: 10px; */
+}
+
+.EmailLbl{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.UsrBtn{
+    background-color: #3b0766;
+    outline: 0;
+    border:none;
+    color:white;
+    font-size:12px;
+    height:40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+}
+
+.BoundaryRect{
+    width:280px;
+    /* height:380px; */
+    border:1px solid white;
+    /* overflow-y:scroll;
+    overflow-x: hidden; */
+    padding:10px
+
+}
+
+.DetailDiv{
+    display: flex;
+    flex-flow: column;
+}
+
+.RowDiv{
+    width:500px;
+    border:5px solid white;
+    padding:5px;
+    margin-left: 40px;
+    margin-top: 80px;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.TxDivBoundary{
+    width:500px;
+    border:5px solid white;
+    padding:5px;
+    margin-left: 40px;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 100px;
+}
+
+.BiggerFont{
+    font-weight: 600;
+    font-size: 16px;
+    color:wheat;
+}
+
+.SmallerFont{
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    color:white;
+    margin-bottom: 20px;
+}
+
+
+.ErrorMessage{
+    color:red;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.ErrorMessage1{
+    color:red;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 0px;
+}
+
+.ColDiv{
+    display: flex;
+    flex-flow:column;
+}
+
+@media (max-width:700px){
+
+    .LayoutComponents{
+        display:flex;
+        justify-content:left;
+        background-color:white;
+    }
+}
