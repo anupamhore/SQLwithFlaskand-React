@@ -1,0 +1,150 @@
+STORED PROCEDURES:
+
+Add User Account Number:
+=======================
+CREATE PROCEDURE [dbo].[ADDACCOUTNO] @email as VARCHAR(50), @accountNo as BIGINT
+AS
+BEGIN
+	insert into AccountTable(usr_ID,accountNO,totalAmount)
+	values((select usr_ID from UserTable where email=@email), @accountNo,0)
+END
+
+Add User:
+=========
+CREATE PROCEDURE [dbo].[ADDUSER] @dob as DATE, @email as VARCHAR(50)
+AS
+BEGIN
+	insert into UserTable(dob,email,created_on)
+	 values(@dob, @email, getDate())
+END
+
+Check User Account Balance:
+===========================
+CREATE PROCEDURE [dbo].[CHECKACCOUTBALANCE] @email as VARCHAR(50), @accountNo as BIGINT  
+AS
+BEGIN
+SELECT totalAmount from AccountTable
+WHERE usr_ID = (
+SELECT usr_ID from UserTable
+WHERE email = @email
+) AND
+accountNO = @accountNo
+END
+
+Deposit Money to Account (Credit):
+==================================
+CREATE PROCEDURE [dbo].[CREDITAMOUNT] @email as VARCHAR(50), @accountNo as BIGINT, @amt as BIGINT 
+AS
+BEGIN
+	declare @getTotalAmount as BIGINT
+	declare @userID AS INT
+	set @userID = (select usr_ID from UserTable 
+				where email = @email)
+	set @getTotalAmount = (select totalAmount from AccountTable where usr_ID = @userID and accountNO=@accountNo)
+
+	update AccountTable
+		set totalAmount = @getTotalAmount + @amt
+		where usr_ID = @userID and accountNO = @accountNo
+
+	insert into TXTable(txDate,usr_ID,accountID,withdrawnAmt,txType)
+	values(
+		getDate(),
+		@userID,
+		(select accountID from AccountTable
+		 where usr_ID = @userID and accountNo= @accountNo),
+		@amt,'Credit')
+END
+
+
+Get User List:
+==============
+CREATE PROCEDURE [dbo].[GETUSER]
+AS
+BEGIN
+	select
+		usr.dob as dob,
+		usr.email as email,
+		acc.accountNo
+		from UserTable as usr left join
+		AccountTable as acc on
+		usr.usr_ID = acc.usr_ID
+END
+
+Get Transaction History:
+=========================
+CREATE PROCEDURE [dbo].[TXHISTORY] @fromDate as DATE, @toDate as DATE, @email as VARCHAR(50)
+AS
+BEGIN
+    
+    declare @userID as INT
+	set @userID = (select usr_ID from UserTable 
+				where email = @email)
+
+	IF NULLIF(@fromDate, '') IS NULL OR NULLIF(@toDate, '') IS NULL
+	 BEGIN
+	 	   select 
+			tx.txDate,
+			tx.withdrawnAmt,
+			acc.accountNO,
+			tx.txType
+			from TXTable as tx left join
+			AccountTable as acc on
+			tx.accountID = acc.accountID
+			where tx.usr_ID=@userID
+			order by tx.txDate desc
+	 END
+	ELSE
+	  BEGIN
+	       select 
+			tx.txDate,
+			tx.withdrawnAmt,
+			acc.accountNO,
+			tx.txType
+			from TXTable as tx left join
+			AccountTable as acc on
+			tx.accountID = acc.accountID
+			where tx.usr_ID=@userID
+			and
+			tx.txDate BETWEEN @fromDate AND @toDate
+			order by tx.txDate desc
+	  END
+
+END
+
+
+Withdraw Amount (Debit):
+========================
+CREATE PROCEDURE [dbo].[WITHDRAWAMOUNT] @email as VARCHAR(50) , @accountNo as BIGINT, @withdraw as BIGINT
+AS
+declare @minbalance as INT = 5000
+declare @userID AS INT
+set @userID = (select usr_ID from UserTable 
+				where email = @email)
+declare @totalBalance as BIGINT
+set @totalBalance = (select totalAmount from AccountTable
+						where usr_ID = @userID
+						and accountNO = @accountNo)
+
+if ((@totalBalance - @withdraw) > @minbalance)
+BEGIN
+    update AccountTable
+	set totalAmount = @totalBalance - @withdraw
+	where
+	usr_ID = @userID 
+	and
+	accountNO = @accountNo
+
+	insert into TXTable(txDate,usr_ID,accountID,withdrawnAmt,txType)
+	values(
+		getDate(),
+		@userID,
+		(select accountID from AccountTable
+		 where usr_ID = @userID and accountNo= @accountNo),
+		@withdraw,'Debit')
+	
+END
+
+
+
+
+
